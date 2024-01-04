@@ -1,4 +1,7 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
+"""
+pascal_triangle
+"""
 
 
 def pascal_triangle(n):
