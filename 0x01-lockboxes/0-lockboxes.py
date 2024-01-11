@@ -25,7 +25,7 @@ class Box:
         self._k = k
         self._keysList = keysList
         self._idx = idx
-        if str(idx) in k.keys and k.keys[str(idx)] == True:
+        if str(idx) in k.keys and k.keys[str(idx)] is True:
             for key in keysList:
                 k.keys[str(key)] = True
         else:
@@ -33,16 +33,17 @@ class Box:
 
     def update(self):
         """update function"""
-        if str(self._idx) in self._k.keys and self._k.keys[str(self._idx)] == True:
+        if str(self._idx) in self._k.keys and\
+                self._k.keys[str(self._idx)] is True:
             for key in self._keysList:
                 self._k.keys[str(key)] = True
 
 
 def canUnlockAll(boxes):
     """canUnlockAll function"""
-    l = len(boxes)
-    k = Keys(l)
-    for i in range(l):
+    size = len(boxes)
+    k = Keys(size)
+    for i in range(size):
         Box(boxes[i], i, k)
     for box in Boxes.Locked:
         box.update()
