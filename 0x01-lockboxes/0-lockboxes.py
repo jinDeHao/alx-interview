@@ -1,5 +1,5 @@
-#!/usr/bin/python3
-"""Lockboxes"""
+#!/usr/bin/env python3
+"""Lockboxes is it locked"""
 
 
 class Keys:
