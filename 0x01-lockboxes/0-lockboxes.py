@@ -7,7 +7,7 @@ class Keys:
 
     def __init__(self, numOfBoxes: int):
         """init function"""
-        self.keys: dict = {}
+        self.keys = {}
         for i in range(numOfBoxes):
             self.keys[f'{i}'] = True if i == 0 else False
 
