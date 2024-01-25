@@ -28,7 +28,7 @@ filesize = 0
 lineindex = 0
 
 
-def SignalHandler_SIGINT(SignalNumber, Frame):
+def SignalHandler_SIGINT(signum, frame):
     """Ctrl C Signal Handler"""
     print("File size: {}".format(filesize))
     for code, num in valid_status_code.items():
