@@ -25,7 +25,7 @@ valid_status_code = {
     "500": 0
     }
 filesize = 0
-lineindex = 1
+lineindex = 0
 
 
 def SignalHandler_SIGINT(SignalNumber, Frame):
@@ -38,6 +38,7 @@ def SignalHandler_SIGINT(SignalNumber, Frame):
 signal.signal(signal.SIGINT, SignalHandler_SIGINT)
 
 for line in sys.stdin:
+    lineindex += 1
     if re.match(regex, line):
         filesize += int(re.search(filesizeregex, line).group(0))
         statuscode = re.search(statuscoderegex, line).group(0)[2:]
@@ -48,4 +49,3 @@ for line in sys.stdin:
         for code, num in valid_status_code.items():
             if num:
                 print("{}: {}".format(code, num))
-    lineindex += 1
