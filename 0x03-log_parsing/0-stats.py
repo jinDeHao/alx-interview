@@ -29,31 +29,22 @@ filesize = 0
 lineindex = 0
 
 
-def SignalHandler_SIGINT():
-    """Ctrl C Signal Handler"""
+def show():
+    """display status"""
     print("File size: {}".format(filesize))
     for code, num in valid_status_code.items():
         if num:
             print("{}: {}".format(code, num))
 
-
-# signal.signal(signal.SIGINT, SignalHandler_SIGINT)
-
 try:
     for line in sys.stdin:
         lineindex += 1
-        try:
-            if re.match(regex, line):
-                filesize += int(re.search(filesizeregex, line).group(0))
-                statuscode = re.search(statuscoderegex, line).group(0)[2:]
-                if statuscode in valid_status_code:
-                    valid_status_code[statuscode] += 1
-        except Exception:
-            pass
+        if re.match(regex, line):
+            filesize += int(re.search(filesizeregex, line).group(0))
+            statuscode = re.search(statuscoderegex, line).group(0)[2:]
+            if statuscode in valid_status_code:
+                valid_status_code[statuscode] += 1
         if lineindex % 10 == 0:
-            print("File size: {}".format(filesize))
-            for code, num in valid_status_code.items():
-                if num:
-                    print("{}: {}".format(code, num))
+            show()
 finally:
-    SignalHandler_SIGINT()
+    show()
