@@ -32,7 +32,7 @@ lineindex = 0
 def show():
     """display status"""
     print("File size: {}".format(filesize))
-    for code, num in dict(sorted(valid_status_code.items())).items():
+    for code, num in valid_status_code.items():
         if num:
             print("{}: {}".format(code, num))
 
@@ -40,10 +40,16 @@ try:
     for line in sys.stdin:
         lineindex += 1
         if re.match(regex, line):
-            filesize += int(re.search(filesizeregex, line).group(0))
-            statuscode = re.search(statuscoderegex, line).group(0)[2:]
+            try:
+                filesize += int(re.search(filesizeregex, line).group(0))
+                statuscode = re.search(statuscoderegex, line).group(0)[2:]
+            except Exception:
+                pass
             if statuscode in valid_status_code:
-                valid_status_code[statuscode] += 1
+                try:
+                    valid_status_code[statuscode] += 1
+                except Exception:
+                    pass
         if lineindex % 10 == 0:
             show()
 finally:
