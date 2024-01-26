@@ -32,7 +32,7 @@ lineindex = 0
 def show():
     """display status"""
     print("File size: {}".format(filesize))
-    for code, num in valid_status_code.items():
+    for code, num in dict(sorted(valid_status_code.items())).items():
         if num:
             print("{}: {}".format(code, num))
 
