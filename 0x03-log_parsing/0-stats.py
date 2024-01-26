@@ -40,17 +40,13 @@ try:
     for line in sys.stdin:
         lineindex += 1
         if re.match(regex, line):
-            try:
-                filesize += int(re.search(filesizeregex, line).group(0))
-                statuscode = re.search(statuscoderegex, line).group(0)[2:]
-            except Exception:
-                pass
+            filesize += int(re.search(filesizeregex, line).group(0))
+            statuscode = re.search(statuscoderegex, line).group(0)[2:]
             if statuscode in valid_status_code:
-                try:
-                    valid_status_code[statuscode] += 1
-                except Exception:
-                    pass
+                valid_status_code[statuscode] += 1
         if lineindex % 10 == 0:
             show()
+except Exception:
+    pass
 finally:
     show()
