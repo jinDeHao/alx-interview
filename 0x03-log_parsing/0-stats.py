@@ -48,4 +48,3 @@ try:
             show()
 finally:
     show()
-    raise
