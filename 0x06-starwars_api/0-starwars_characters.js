@@ -10,8 +10,7 @@ const fun = async () => {
     return;
   }
   try {
-    const url = `https://swapi-api.alx-tools.com/api/films/${num[0]}`
-    let req = await request(url);
+    let req = await request(`https://swapi-api.alx-tools.com/api/films/${num[0]}`);
     const characters = await JSON.parse(req.body).characters;
     if (characters === undefined) {
       return;
