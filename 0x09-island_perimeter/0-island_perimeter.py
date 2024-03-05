@@ -63,12 +63,3 @@ def island_perimeter(grid):
     if not valid_island(grid):
         return 0
     return walker(grid)
-
-
-print(island_perimeter([
-        [0, 0, 0, 0, 0, 0],
-        [0, 1, 0, 0, 0, 0],
-        [0, 1, 0, 0, 0, 0],
-        [0, 1, 1, 1, 0, 0],
-        [0, 0, 0, 0, 0, 0]
-    ]))
