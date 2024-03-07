@@ -63,8 +63,3 @@ def island_perimeter(grid):
     if not valid_island(grid):
         return 0
     return walker(grid)
-
-grid = [
-
-    ]
-print(island_perimeter(grid))
