@@ -32,13 +32,13 @@ def count_perimerter(grid, x, y):
     perimerter counter
     """
     p = 0
-    if x-1 >= 0 and grid[x-1][y] == 0:
+    if x-1 < 0 or grid[x-1][y] == 0:
         p += 1
-    if y+1 < Len.w and grid[x][y+1] == 0:
+    if y+1 >= Len.w or grid[x][y+1] == 0:
         p += 1
-    if x+1 < Len.h and grid[x+1][y] == 0:
+    if x+1 >= Len.h or grid[x+1][y] == 0:
         p += 1
-    if y-1 >= 0 and grid[x][y-1] == 0:
+    if y-1 < 0 or grid[x][y-1] == 0:
         p += 1
     return p
 
