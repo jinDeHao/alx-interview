@@ -14,9 +14,9 @@ class Len:
 
 def valid_island(grid):
     """
-    check of the island id valid
+    check if the island id valid
     """
-    if grid == [] or grid == [[]] or not isinstance(grid[0], list):
+    if not isinstance(grid, list) or grid == [] or not isinstance(grid[0], list) or grid == [[]]:
         return 0
     Len.h = len(grid)
     Len.w = len(grid[0])
@@ -63,3 +63,8 @@ def island_perimeter(grid):
     if not valid_island(grid):
         return 0
     return walker(grid)
+
+grid = [
+
+    ]
+print(island_perimeter(grid))
