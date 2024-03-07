@@ -21,8 +21,7 @@ def valid_island(grid):
         return 0
     Len.h = len(grid)
     Len.w = len(grid[0])
-    if grid == [[0]*Len.w]*Len.h or\
-            grid == [[1]*Len.w]*Len.h:
+    if grid == [[0]*Len.w]*Len.h:
         return 0
     return 1
 
