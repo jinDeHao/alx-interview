@@ -17,7 +17,7 @@ def valid_island(grid):
     check if the island id valid
     """
     if not isinstance(grid, list) or grid == [] or\
-            not isinstance(grid[0], list) or grid == [[]]:
+            not all(isinstance(g, list) for g in grid) or grid == [[]]:
         return 0
     Len.h = len(grid)
     Len.w = len(grid[0])
