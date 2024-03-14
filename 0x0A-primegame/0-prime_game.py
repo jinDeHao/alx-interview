@@ -23,8 +23,6 @@ def isWinner(x, nums):
     number and its multiples from the set.
     The player that cannot make a move loses the game.
     """
-    if x == 0 or len(nums) == 0:
-        return None
     players = {"Maria": 0, "Ben": 0}
     for num in nums[:x]:
         count_p = count_primes(num)
