@@ -12,12 +12,13 @@ def isPrime(n):
     return True
 
 
-def still_prime(req_list):
+def count_prime(req_list):
     """check if one item in list is prime"""
+    count = 0
     for one in req_list:
         if isPrime(one):
-            return True
-    return False
+            count += 1
+    return count
 
 
 def isWinner(x, nums):
@@ -29,29 +30,17 @@ def isWinner(x, nums):
     number and its multiples from the set.
     The player that cannot make a move loses the game.
     """
-    if not x or not nums:
+    if x == 0 or len(nums) == 0:
         return None
-    player = {"Maria": 0, "Ben": 0}
-    primeList = [i for i in range(2, 10001) if isPrime(i)]
-    for n in nums[:x]:
-        round = [i for i in range(1, n+1)]
-        i = 0
-        for r in primeList:
-            name = 'Ben'
-            if i % 2 == 0:
-                name = 'Maria'
-            if not still_prime(round):
-                player[name] -= 1
-                break
-            m = []
-            for num in round:
-                if num % r == 0:
-                    m.append(num)
-            for j in m:
-                round.remove(j)
-            i += 1
-    if player['Ben'] > player['Maria']:
+    players = {"Maria": 0, "Ben": 0}
+    for num in nums[:x]:
+        count_p = count_prime([i for i in range(1, num + 1)])
+        if count_p % 2 == 0:
+            players['Ben'] += 1
+        else:
+            players['Maria'] += 1
+    if players['Ben'] > players['Maria']:
         return 'Ben'
-    if player['Maria'] > player['Ben']:
+    if players['Maria'] > players['Ben']:
         return 'Maria'
     return None
