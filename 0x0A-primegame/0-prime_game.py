@@ -29,11 +29,11 @@ def isWinner(x, nums):
     number and its multiples from the set.
     The player that cannot make a move loses the game.
     """
-    if not x or x != len(nums) or not nums:
+    if not x or not nums:
         return None
     player = {"Maria": 0, "Ben": 0}
     primeList = [i for i in range(2, 10001) if isPrime(i)]
-    for n in nums:
+    for n in nums[:x]:
         round = [i for i in range(1, n+1)]
         i = 0
         for r in primeList:
@@ -55,3 +55,24 @@ def isWinner(x, nums):
     if player['Maria'] > player['Ben']:
         return 'Maria'
     return None
+
+def test_isWinner():
+    test_cases = [
+        ((3, [3, 4, 5]), "Ben"),
+        ((2, [5, 6]), "Maria"),
+        ((4, [7, 8, 9, 10]), "Maria"),
+        ((3, [11, 12, 13]), "Maria"),
+        ((2, [14, 15]), None),
+    ]
+
+    for inputs, expected in test_cases:
+        x, nums = inputs
+        result = isWinner(x, nums)
+        if result != expected:
+            print(f"Test case failed: For inputs {inputs}, expected {expected}, but got {result}")
+            return
+
+    print("All test cases passed!")
+
+# Call the tester function
+test_isWinner()
