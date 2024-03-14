@@ -5,23 +5,12 @@
 def count_primes(n):
     """check if one item in list is prime"""
     number = 0
-    # sieve = [True] * (n + 1)
-    # for p in range(2, n + 1):
-    #     if sieve[p]:
-    #         number += 1
-    #         for i in range(p, n + 1, p):
-    #             sieve[i] = False
-    round = [i for i in range(1, n+1)]
-    for r in round:
-        is_not = False
-        if r == 1:
-            continue
-        for i in range(2, int(r**0.5) + 1):
-            if r % i == 0 or r % (i + 2) == 0:
-                is_not = True
-                break
-        if not is_not:
+    sieve = [True] * (n + 1)
+    for p in range(2, n + 1):
+        if sieve[p]:
             number += 1
+            for i in range(p, n + 1, p):
+                sieve[i] = False
     return number
 
 
