@@ -6,7 +6,7 @@ def isPrime(n):
     """check if the number is prime"""
     if n == 1:
         return False
-    for i in range(2, int(n/2)):
+    for i in range(2, int(n/2) + 1):
         if n % i == 0:
             return False
     return True
@@ -29,29 +29,27 @@ def isWinner(x, nums):
     number and its multiples from the set.
     The player that cannot make a move loses the game.
     """
-    palyer = {"Maria": 0, "Ben": 0}
+    player = {"Maria": 0, "Ben": 0}
     primeList = [i for i in range(2, 10001) if isPrime(i)]
     for n in nums:
         round = [i for i in range(1, n+1)]
         i = 0
         for r in primeList:
-            name = 'Maria'
+            name = 'Ben'
             if i % 2 == 0:
-                name = 'Ben'
+                name = 'Maria'
             if not still_prime(round):
-                palyer[name] += 1
+                player[name] -= 1
                 break
             m = []
             for num in round:
                 if num % r == 0:
                     m.append(num)
-            all(round.remove(j) for j in m)
+            for j in m:
+                round.remove(j)
             i += 1
-    if palyer['Ben'] > palyer['Maria']:
+    if player['Ben'] > player['Maria']:
         return 'Ben'
-    if palyer['Maria'] > palyer['Ben']:
+    if player['Maria'] > player['Ben']:
         return 'Maria'
     return None
-
-
-# print("Winner: {}".format(isWinner(5, [2, 5, 1, 4, 3])))
