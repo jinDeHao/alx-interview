@@ -5,12 +5,23 @@
 def count_primes(n):
     """check if one item in list is prime"""
     number = 0
-    sieve = [True] * (n + 1)
-    for p in range(2, n + 1):
-        if sieve[p]:
+    # sieve = [True] * (n + 1)
+    # for p in range(2, n + 1):
+    #     if sieve[p]:
+    #         number += 1
+    #         for i in range(p, n + 1, p):
+    #             sieve[i] = False
+    round = [i for i in range(1, n+1)]
+    for r in round:
+        is_not = False
+        if r == 1:
+            continue
+        for i in range(2, int(r**0.5) + 1):
+            if r % i == 0:
+                is_not = True
+                break
+        if not is_not:
             number += 1
-            for i in range(p, n + 1, p):
-                sieve[i] = False
     return number
 
 
@@ -35,3 +46,24 @@ def isWinner(x, nums):
     if players['Maria'] > players['Ben']:
         return 'Maria'
     return None
+
+def test_isWinner():
+    test_cases = [
+        ((3, [3, 4, 5]), "Ben"),
+        ((2, [5, 6]), "Maria"),
+        ((4, [7, 8, 9, 10]), "Ben"),
+        ((3, [11, 12, 13]), "Maria"),
+        ((2, [14, 15]), "Ben"),
+    ]
+
+    for inputs, expected in test_cases:
+        x, nums = inputs
+        result = isWinner(x, nums)
+        if result != expected:
+            print(f"Test case failed: For inputs {inputs}, expected {expected}, but got {result}")
+            return
+
+    print("All test cases passed!")
+
+# Call the tester function
+test_isWinner()
