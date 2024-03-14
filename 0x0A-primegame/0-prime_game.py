@@ -1,24 +1,6 @@
 #!/usr/bin/python3
 """Prime Game"""
 
-# def isPrime(n):
-#     """check if the number is prime"""
-#     if n == 1:
-#         return False
-#     for i in range(2, int(n/2) + 1):
-#         if n % i == 0:
-#             return False
-#     return True
-
-
-# def count_prime(req_list):
-#     """check if one item in list is prime"""
-#     count = 0
-#     for one in req_list:
-#         if isPrime(one):
-#             count += 1
-#     return count
-
 
 def count_primes(n):
     """check if one item in list is prime"""
@@ -55,21 +37,3 @@ def isWinner(x, nums):
     if players['Maria'] > players['Ben']:
         return 'Maria'
     return None
-
-
-# def isWinner(x, nums):
-#     """ Determine the winner of the game. """
-#     if not x or not nums:
-#         return None
-#     maria_count = ben_count = 0
-#     for num in nums[:x]:
-#         primes = get_primes(num)
-#         if len(primes) % 2 == 0:
-#             ben_count += 1
-#         else:
-#             maria_count += 1
-#     if maria_count > ben_count:
-#         return 'Maria'
-#     elif ben_count > maria_count:
-#         return 'Ben'
-#     return None
