@@ -29,7 +29,7 @@ def isWinner(x, nums):
     number and its multiples from the set.
     The player that cannot make a move loses the game.
     """
-    if not isinstance(nums, list) or x != len(nums):
+    if not x or x != len(nums):
         return None
     player = {"Maria": 0, "Ben": 0}
     primeList = [i for i in range(2, 10001) if isPrime(i)]
